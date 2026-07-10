@@ -2,6 +2,8 @@
 #define __SERIAL_H__
 
 #include <kernel/types.h>
+#define SERIAL_BUF_SIZE 256
+
 
 /* this IRQ number is not magical: it's extracted from the device tree,
  * which describes the hardware that the QEMU virtual machine is emulating.
