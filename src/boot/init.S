@@ -25,8 +25,8 @@ init:
 
     # clear bits 12:11 with a bitmask
     # mstatus[12:11] -> 0b0001'1000'0000'0000 = 0x1800
-    li t0, 0x1800
-    csrc mstatus, t0
+    # li t0, 0x1800
+    #csrc mstatus, t0
     # set mstatus[12:11] = 0b01 (S-mode)
     li t0, 0x800
     csrs mstatus, t0
@@ -40,7 +40,7 @@ init:
     # otherwise stimecmp will be read-only zero)
     # https://docs.riscv.org/reference/isa/priv/machine.html#sec:menvcfg
     li t0, (1 << 63)
-    csrs menvcfg, t0
+    csrs 0x30A, t0
     # allow S-mode to access the stimecmp register, otherwise we get an
     # illegal instruction fault on access
     # https://docs.riscv.org/reference/isa/priv/machine.html#mcounteren
